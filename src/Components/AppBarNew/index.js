@@ -115,7 +115,7 @@ const AppBarNew = () => {
               cursor: "pointer",
             }}
           >
-            Cake Tú
+            Cake Trần Tú
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>

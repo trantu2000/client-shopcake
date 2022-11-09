@@ -43,8 +43,10 @@ import Profile from "./Pages/Profile";
 import UpdateProfile from "./Pages/UpdateProfile";
 import UpdatePassword from "./Pages/UpdatePassword";
 
-
 function App() {
+  axios.create({
+    baseURL: "https://tucake2000.herokuapp.com/",
+  });
   useEffect(() => {
     store.dispatch(loadUser());
     async function getStripApiKey() {
@@ -162,7 +164,14 @@ function App() {
                 <>
                   <Footer />
                   <Box>
-                    <Typography sx={{ bgcolor: Colors.black, p: 3 ,color:Colors.white,pl:20}}>
+                    <Typography
+                      sx={{
+                        bgcolor: Colors.black,
+                        p: 3,
+                        color: Colors.white,
+                        pl: 20,
+                      }}
+                    >
                       Copyright &copy;2022 All rights reserved | Shop cake
                     </Typography>
                   </Box>

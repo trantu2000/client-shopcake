@@ -160,7 +160,7 @@ function App() {
                 exact
               />
 
-              {!loading && (!isAuthenticated || user.role !== "admin") && (
+              {!loading && (!isAuthenticated ||user?.role !== "admin") && (
                 <>
                   <Footer />
                   <Box>

@@ -7,16 +7,16 @@ const Breadcrumb = ({title}) => {
   return (
     <Box
       sx={{
-        pt: 12,
+        pt: 2,
         pb:5
       }}
     >
       <Grid container spacing={2}>
-        <Grid item xs={8}>
+        <Grid item xs={6} md={10}>
           <Typography
             sx={{
               color: Colors.black,
-              fontSize: "3rem",
+              fontSize: "2.5rem",
               paddingTop: "1rem",
               fontWeight: 800,
               fontFamily: "Montez",
@@ -25,11 +25,9 @@ const Breadcrumb = ({title}) => {
             {title}
           </Typography>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6} md={2}>
           <Breadcrumbs
-            sx={{
-              p: 1,
-            }}
+            
             aria-label="breadcrumb"
           >
             <Link to="#" underline="hover" color="inherit">

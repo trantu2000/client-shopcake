@@ -27,6 +27,7 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MetaData from "../../Components/MetaData";
+import Breadcrumb from "../../Components/Breadcrumb";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: Colors.dove_gray,
@@ -38,8 +39,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const ProductImageShopingCard = styled("img")(({ src, theme }) => ({
   src: `url(${src})`,
-  width: "5rem",
-  height: "5rem",
+  width: "4rem",
+  height: "4rem",
   background: Colors.light_gray,
 
   // [theme.breakpoints.down("md")]: {
@@ -80,51 +81,16 @@ const ShopingCart = () => {
     <Container>
       <MetaData title="Giỏ hàng" />
       <ToastContainer />
-      <Paper elevation={3}
-      sx={{
-        pl:2,
-        pr:2,
-        mt:11,
-        mb:6
-      }}
+      <Paper
+        elevation={3}
+        sx={{
+          pl: 2,
+          pr: 2,
+          mt: 11,
+          mb: 6,
+        }}
       >
-        <Box
-          sx={{
-            p: 4,
-          
-          }}
-        >
-          <Grid container spacing={2}>
-            <Grid item xs={8}>
-              <Typography
-                sx={{
-                  color: Colors.black,
-                  fontSize: "2rem",
-                  paddingTop: "1rem",
-                  fontWeight: 800,
-                }}
-              >
-                Giỏ hàng
-              </Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Breadcrumbs
-                sx={{
-                  p: 1,
-                }}
-                aria-label="breadcrumb"
-              >
-                <Link to="#" underline="hover" color="inherit">
-                  Trang chủ
-                </Link>
-                <Link underline="hover" color="inherit" to="#">
-                  Giỏ hàng
-                </Link>
-                {/* <Typography color="text.primary">Breadcrumbs</Typography> */}
-              </Breadcrumbs>
-            </Grid>
-          </Grid>
-        </Box>
+        <Breadcrumb title="Giỏ hàng" />
         <Box
           sx={{
             // background: Colors.shaft,
@@ -135,7 +101,7 @@ const ShopingCart = () => {
           }}
         >
           <Grid container spacing={2}>
-            <Grid item xs={8}>
+            <Grid item xs={12} sm={8} md={8}>
               {cartItems.length === 0 ? (
                 <Box display="flex" justifyContent="center" alignItems="center">
                   <Typography
@@ -152,20 +118,20 @@ const ShopingCart = () => {
               ) : (
                 <Fragment>
                   <Grid container>
-                    <Grid item xs={6}>
+                    <Grid item xs={5} md={6}>
                       <Typography variant="h6">Sản phẩm</Typography>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={3} md={2}>
                       <Typography variant="h6" align="center">
                         Số lượng
                       </Typography>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={3} md={3}>
                       <Typography variant="h6" align="center">
                         Tạm tính
                       </Typography>
                     </Grid>
-                    <Grid item xs={1}>
+                    <Grid item xs={1} md={1}>
                       <Typography variant="h6" align="center"></Typography>
                     </Grid>
                   </Grid>
@@ -177,22 +143,23 @@ const ShopingCart = () => {
                         display="flex"
                         justifyContent="center"
                         alignItems="center"
-                        padding="1rem"
+                        sx={{ mt: 0.5 }}
                       >
-                        <Grid item xs={6}>
+                        {/* xs={12} sm={8} md={8} */}
+                        <Grid item xs={5} md={6}>
                           <Grid
                             container
                             display="flex"
                             justifyContent="center"
                             alignItems="center"
                           >
-                            <Grid item xs={4}>
+                            <Grid item xs={6}>
                               <ProductImageShopingCard
                                 src={item.image}
                                 alt={item.image}
                               />
                             </Grid>
-                            <Grid item xs={8}>
+                            <Grid item xs={6}>
                               <Typography
                                 variant="subtitle1"
                                 sx={{
@@ -215,7 +182,7 @@ const ShopingCart = () => {
                             </Grid>
                           </Grid>
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs={3} md={2}>
                           <Box
                             display="Flex"
                             alignItems="center"
@@ -224,8 +191,8 @@ const ShopingCart = () => {
                             <IconButton
                               sx={{
                                 borderRadius: 1,
-                                background: Colors.primary,
-                                color: Colors.white,
+                                // background: Colors.primary,
+                                color: Colors.black,
                                 "&:hover": {
                                   background: Colors.secondary,
                                   color: Colors.black,
@@ -242,8 +209,6 @@ const ShopingCart = () => {
                               variant="body1"
                               sx={{
                                 border: "none",
-                                pl: 2,
-                                pr: 2,
                                 pt: 1,
                                 pb: 1,
                               }}
@@ -254,8 +219,8 @@ const ShopingCart = () => {
                             <IconButton
                               sx={{
                                 borderRadius: 1,
-                                background: Colors.primary,
-                                color: Colors.white,
+                                // background: Colors.primary,
+                                color: Colors.black,
                                 "&:hover": {
                                   background: Colors.secondary,
                                   color: Colors.black,
@@ -273,7 +238,7 @@ const ShopingCart = () => {
                             </IconButton>
                           </Box>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={3} md={3}>
                           <Typography
                             variant="subtitle1"
                             align="center"
@@ -287,7 +252,7 @@ const ShopingCart = () => {
                             })}
                           </Typography>
                         </Grid>
-                        <Grid item xs={1}>
+                        <Grid item xs={1} md={1}>
                           <IconButton
                             onClick={() => removeCartItemHandler(item.product)}
                             aria-label="delete"
@@ -328,7 +293,7 @@ const ShopingCart = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={4}>
+            <Grid item md={4} sm={4} xs={12}>
               <Item>
                 <Typography variant="h6" align="center">
                   Thông tin đơn hàng

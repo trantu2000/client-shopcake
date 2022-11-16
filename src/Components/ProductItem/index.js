@@ -44,7 +44,7 @@ const ProductItem = ({ product,grid }) => {
     });
   };
   return (
-    <Grid item xs={grid}>
+    <Grid item xs={12}  sm={6} md={3}>
       <ToastContainer />
 
       <Box

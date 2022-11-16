@@ -115,7 +115,7 @@ const AppBarNew = () => {
               cursor: "pointer",
             }}
           >
-            Cake Trần Tú
+            Cake Tú
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -157,7 +157,7 @@ const AppBarNew = () => {
             </Box>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 0}}>
             <Link to="/shoping-cart">
               <IconButton
                 size="large"

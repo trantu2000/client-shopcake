@@ -42,14 +42,14 @@ const Login = ({ history, location }) => {
   useEffect(() => {
     if (isAuthenticated) {
       history.push(redirect);
-      // toast.success("Login success !", {
-      //   position: toast.POSITION.TOP_RIGHT,
-      // });
+      toast.success("Login success !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
 
     if (error) {
       // alert.error(error);
-      toast.error(error, {
+      toast.error("Lỗi", {
         position: toast.POSITION.TOP_RIGHT,
       });
       dispatch(clearErrors());

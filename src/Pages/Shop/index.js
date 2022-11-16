@@ -60,6 +60,7 @@ const Shop = ({ match }) => {
     "donut",
     "cookie",
   ];
+  console.log(products);
 
   return (
     <Container>

@@ -78,7 +78,7 @@ function App() {
 
               <Route path="/" exact component={Home} />
               <Route path="/register" component={Register} />
-              <ProtectedRoute path="/login" component={Login} />
+              <Route path="/login" component={Login} />
               <Route path="/shop" component={Shop} />
               <Route path="/search/:keyword" component={Shop} />
               <Route path="/contact" component={Contact} />

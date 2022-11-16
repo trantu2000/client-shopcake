@@ -41,7 +41,7 @@ const Login = ({ history, location }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      history.push("/");
+      history.push(redirect);
       // toast.success("Login success !", {
       //   position: toast.POSITION.TOP_RIGHT,
       // });
@@ -54,7 +54,7 @@ const Login = ({ history, location }) => {
       });
       dispatch(clearErrors());
     }
-  }, [dispatch, isAuthenticated, error, history]);
+  }, [dispatch, isAuthenticated, error, history, redirect]);
 
   const submitHandle = (e) => {
     e.preventDefault();

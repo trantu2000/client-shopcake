@@ -42,15 +42,14 @@ import UpdateUser from "./Pages/Admin/Pages/UpdateUser";
 import Profile from "./Pages/Profile";
 import UpdateProfile from "./Pages/UpdateProfile";
 import UpdatePassword from "./Pages/UpdatePassword";
+import { apiUrl } from "./Redux/Constants/apiUrl";
 
 function App() {
-  axios.create({
-    baseURL: "https://tucake2000.herokuapp.com",
-  });
+
   useEffect(() => {
     store.dispatch(loadUser());
     async function getStripApiKey() {
-      const { data } = await axios.get("/api/v1/stripeapi");
+      const { data } = await axios.get(`${apiUrl}/stripeapi`);
 
       setStripeApiKey(data.stripeApiKey);
     }

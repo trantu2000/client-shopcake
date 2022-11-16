@@ -95,7 +95,7 @@ const ShopingCart = () => {
           sx={{
             // background: Colors.shaft,
             //color: Colors.white,
-            pb: 12,
+            pb: 3,
             // flexGrow: 1
             // fontSize: { xs: '12px', md: '14px' }
           }}

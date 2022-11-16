@@ -34,7 +34,7 @@ const AppBarNew = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const { user } = useSelector((state) => state.auth);
+  const { user, loading } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -172,18 +172,8 @@ const AppBarNew = () => {
               </IconButton>
             </Link>
           </Box>
-          {!user ? (
-            <>
-              <Box sx={{ flexGrow: 0 }}>
-                <Link to="/login">
-                  <IconButton sx={{ color: Colors.white }}>
-                    <Typography>Đăng nhập</Typography>
-                  </IconButton>
-                </Link>
-              </Box>
-            </>
-          ) : (
-            <>
+          {user ? (
+            <React.Fragment>
               <Box sx={{ flexGrow: 0 }}>
                 <Box
                   display="flex"
@@ -254,7 +244,19 @@ const AppBarNew = () => {
                   </MenuItem>
                 </Menu>
               </Box>
-            </>
+            </React.Fragment>
+          ) : (
+            !loading && (
+              <React.Fragment>
+                <Box sx={{ flexGrow: 0 }}>
+                  <Link to="/login">
+                    <IconButton sx={{ color: Colors.white }}>
+                      <Typography>Đăng nhập</Typography>
+                    </IconButton>
+                  </Link>
+                </Box>
+              </React.Fragment>
+            )
           )}
         </Toolbar>
       </Container>

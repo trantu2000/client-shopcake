@@ -1,4 +1,5 @@
 import axios from "axios";
+import { apiUrl } from "../Constants/apiUrl";
 import {
   ADMIN_PRODUCTS_FAIL,
   ADMIN_PRODUCTS_REQUEST,
@@ -29,9 +30,9 @@ export const getProducts =
       dispatch({
         type: ALL_PRODUCTS_REQUEST,
       });
-      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}`;
+      let link = `${apiUrl}/products?keyword=${keyword}&page=${currentPage}`;
       if (category) {
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
+        link = `${apiUrl}/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
       }
 
       const { data } = await axios.get(link);

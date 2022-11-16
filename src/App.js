@@ -45,7 +45,7 @@ import UpdatePassword from "./Pages/UpdatePassword";
 
 function App() {
   axios.create({
-    baseURL: "https://tucake2000.herokuapp.com/",
+    baseURL: "https://tucake2000.herokuapp.com",
   });
   useEffect(() => {
     store.dispatch(loadUser());

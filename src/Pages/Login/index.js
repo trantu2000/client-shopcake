@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import {
   Avatar,
   Button,
@@ -14,9 +14,8 @@ import { Colors } from "../../styles/theme";
 import { Box } from "@mui/system";
 // import Link from '@mui/material/Link';
 import { Link } from "react-router-dom";
-import { login } from "../../Redux/Actions/userActions";
+import { clearErrors, login } from "../../Redux/Actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import { CLEAR_ERRORS } from "../../Redux/Constants/userConstants";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -43,9 +42,9 @@ const Login = ({ history, location }) => {
   useEffect(() => {
     if (isAuthenticated) {
       history.push(redirect);
-      toast.success("Login success !", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      // toast.success("Login success !", {
+      //   position: toast.POSITION.TOP_RIGHT,
+      // });
     }
 
     if (error) {
@@ -53,7 +52,7 @@ const Login = ({ history, location }) => {
       toast.error(error, {
         position: toast.POSITION.TOP_RIGHT,
       });
-      dispatch(CLEAR_ERRORS());
+      dispatch(clearErrors());
     }
   }, [dispatch, isAuthenticated, error, history, redirect]);
 

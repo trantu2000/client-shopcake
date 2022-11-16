@@ -125,7 +125,7 @@ const Shop = ({ match }) => {
                 </>
               ) : (
                 <Grid container>
-                  {products.map((product) => (
+                  {products && products.map((product) => (
                     <ProductItem key={product._id} product={product} grid={3} />
                   ))}
                 </Grid>

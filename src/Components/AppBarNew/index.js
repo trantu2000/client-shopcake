@@ -246,17 +246,13 @@ const AppBarNew = () => {
               </Box>
             </React.Fragment>
           ) : (
-            !loading && (
-              <React.Fragment>
-                <Box sx={{ flexGrow: 0 }}>
-                  <Link to="/login">
-                    <IconButton sx={{ color: Colors.white }}>
-                      <Typography>Đăng nhập</Typography>
-                    </IconButton>
-                  </Link>
-                </Box>
-              </React.Fragment>
-            )
+            !loading && 
+              <Link to="/login">
+                <IconButton sx={{ color: Colors.white }}>
+                  <Typography>Đăng nhập</Typography>
+                </IconButton>
+              </Link>
+            
           )}
         </Toolbar>
       </Container>

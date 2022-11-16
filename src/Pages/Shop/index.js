@@ -67,7 +67,9 @@ const Shop = ({ match }) => {
       <Box>
         <MetaData title="Bánh" />
 
-        <Breadcrumb title="Bánh" />
+        <Box sx={{mt:10}}>
+          <Breadcrumb title="Bánh" />
+        </Box>
 
         <Box
           display="flex"
@@ -92,7 +94,7 @@ const Shop = ({ match }) => {
                     <Grid item xs={3}>
                       <Box>
                         {/* <FormFilterCategory /> */}
-                        <FormControl sx={{ m: 1,  width: "14ch"  }}>
+                        <FormControl sx={{ m: 1, width: "14ch" }}>
                           <Select
                             value={category}
                             onChange={handleChangeOption}
@@ -126,9 +128,10 @@ const Shop = ({ match }) => {
                 </>
               ) : (
                 <Grid container>
-                  {products && products.map((product) => (
-                    <ProductItem key={product._id} product={product}  />
-                  ))}
+                  {products &&
+                    products.map((product) => (
+                      <ProductItem key={product._id} product={product} />
+                    ))}
                 </Grid>
               )}
             </>

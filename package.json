@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-
     "@fontsource/montez": "^4.5.10",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.8",
@@ -65,9 +64,9 @@
       "last 1 safari version"
     ]
   },
-
   "devDependencies": {
     "react-alice-carousel": "^2.6.4"
   },
-  "proxy": "https://tucake2000.herokuapp.com"
+  "proxy": "https://tucake2000.herokuapp.com",
+  "backendApiBaseUrl": "https://tucake2000.herokuapp.com"
 }

@@ -33,9 +33,9 @@ export const getProducts =
         type: ALL_PRODUCTS_REQUEST,
       });
       // let link = `${apiUrl}/products?keyword=${keyword}&page=${currentPage}`;
-      let link = `${apiUrl}/api/v1/products?keyword=${keyword}&page=${currentPage}`;
+      let link = `${apiUrl}/products?keyword=${keyword}&page=${currentPage}`;
       if (category) {
-        link = `${apiUrl}/api/v1/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
+        link = `${apiUrl}/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
       }
 
       const { data } = await axios.get(link);
@@ -59,7 +59,7 @@ export const getProductDetail = (id) => async (dispatch) => {
       type: PRODUCT_DETAIL_REQUEST,
     });
 
-    const { data } = await axios.get(`${apiUrl}/api/v1/product/${id}`);
+    const { data } = await axios.get(`${apiUrl}/product/${id}`);
 
     dispatch({
       type: PRODUCT_DETAIL_SUCCESS,
@@ -77,7 +77,7 @@ export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCTS_REQUEST });
 
-    const { data } = await axios.get(`${apiUrl}/api/v1/admin/products`);
+    const { data } = await axios.get(`${apiUrl}/admin/products`);
 
     dispatch({
       type: ADMIN_PRODUCTS_SUCCESS,
@@ -102,7 +102,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
 
-    const { data } = await axios.delete(`${apiUrl}/api/v1/admin/product/${id}`);
+    const { data } = await axios.delete(`${apiUrl}/admin/product/${id}`);
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
@@ -128,7 +128,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      `${apiUrl}/api/v1/admin/product/${id}`,
+      `${apiUrl}/admin/product/${id}`,
       productData,
       config
     );
@@ -156,7 +156,7 @@ export const newProduct = (productData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `${apiUrl}/api/v1/admin/product/new`,
+      `${apiUrl}/admin/product/new`,
       productData,
       config
     );

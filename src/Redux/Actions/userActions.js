@@ -43,7 +43,7 @@ export const register = (userData) => async (dispatch) => {
         }
         // let link = `${apiUrl}/register`;/api/v1/
 
-        const { data } = await axios.post(`${apiUrl}/api/v1/register`, userData, config)
+        const { data } = await axios.post(`${apiUrl}/register`, userData, config)
 
         dispatch({
             type: REGISTER_USER_SUCCESS,
@@ -69,7 +69,7 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post(`${apiUrl}/api/v1/login`, { email, password }, config)
+        const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config)
         
 
         dispatch({
@@ -91,7 +91,7 @@ export const loadUser = () => async (dispatch) => {
 
         dispatch({ type: LOAD_USER_REQUEST })
 
-        const { data } = await axios.get(`${apiUrl}/api/v1/me`)
+        const { data } = await axios.get(`${apiUrl}/me`)
 
         dispatch({
             type: LOAD_USER_SUCCESS,
@@ -111,7 +111,7 @@ export const loadUser = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
 
-        await axios.get(`${apiUrl}/api/v1/logout`)
+        await axios.get(`${apiUrl}/logout`)
 
         dispatch({
             type: LOGOUT_SUCCESS,

@@ -22,7 +22,7 @@ import {
   UPDATE_PRODUCT_SUCCESS,
 } from "../Constants/productConstants";
 
-import backendApiBaseUrl from '../../../package.json'
+
 
 //actions get all product
 export const getProducts =
@@ -33,9 +33,9 @@ export const getProducts =
         type: ALL_PRODUCTS_REQUEST,
       });
       // let link = `${apiUrl}/products?keyword=${keyword}&page=${currentPage}`;
-      let link = `${backendApiBaseUrl}/api/v1/products?keyword=${keyword}&page=${currentPage}`;
+      let link = `${apiUrl}/api/v1/products?keyword=${keyword}&page=${currentPage}`;
       if (category) {
-        link = `${backendApiBaseUrl}/api/v1/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
+        link = `${apiUrl}/api/v1/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
       }
 
       const { data } = await axios.get(link);

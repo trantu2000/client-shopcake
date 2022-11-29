@@ -22,7 +22,7 @@ import {
   UPDATE_PRODUCT_SUCCESS,
 } from "../Constants/productConstants";
 
-import {backendApiBaseUrl} from '../../../package.json'
+import backendApiBaseUrl from '../../../package.json'
 
 //actions get all product
 export const getProducts =

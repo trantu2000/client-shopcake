@@ -131,7 +131,7 @@ export const allUsers = () => async (dispatch) => {
 
         dispatch({ type: ALL_USERS_REQUEST })
 
-        const { data } = await axios.get(`${apiUrl}/api/v1/admin/users`)
+        const { data } = await axios.get(`${apiUrl}/admin/users`)
 
 
         dispatch({
@@ -159,7 +159,7 @@ export const updateUser = (id, userData) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.put(`${apiUrl}/api/v1/admin/user/${id}`, userData, config)
+        const { data } = await axios.put(`${apiUrl}/admin/user/${id}`, userData, config)
 
         dispatch({
             type: UPDATE_USER_SUCCESS,
@@ -180,7 +180,7 @@ export const getUserDetails = (id) => async (dispatch) => {
         dispatch({ type: USER_DETAILS_REQUEST })
 
 
-        const { data } = await axios.get(`${apiUrl}/api/v1/admin/user/${id}`)
+        const { data } = await axios.get(`${apiUrl}/admin/user/${id}`)
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
@@ -216,7 +216,7 @@ export const updateProfile = (userData) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.put(`${apiUrl}/api/v1/me/update`, userData, config)
+        const { data } = await axios.put(`${apiUrl}/me/update`, userData, config)
 
         dispatch({
             type: UPDATE_PROFILE_SUCCESS,
@@ -243,7 +243,7 @@ export const updatePassword = (passwords) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.put(`${apiUrl}/api/v1/password/update`, passwords, config)
+        const { data } = await axios.put(`${apiUrl}/password/update`, passwords, config)
 
         dispatch({
             type: UPDATE_PASSWORD_SUCCESS,

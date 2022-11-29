@@ -49,10 +49,11 @@ function App() {
   useEffect(() => {
     store.dispatch(loadUser());
     async function getStripApiKey() {
-      const { data } = await axios.get(`${apiUrl}/stripeapi`);
+      const { data } = await axios.get(`/api/v1/stripeapi`);
 
       setStripeApiKey(data.stripeApiKey);
     }
+    // "proxy": "http://127.0.0.1:6000"
 
     getStripApiKey();
   }, []);

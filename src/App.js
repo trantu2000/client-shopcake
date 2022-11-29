@@ -45,22 +45,23 @@ import UpdatePassword from "./Pages/UpdatePassword";
 import { apiUrl } from "./Redux/Constants/apiUrl";
 
 function App() {
+  const [stripeApiKey, setStripeApiKey] = useState("");
 
   useEffect(() => {
     store.dispatch(loadUser());
-    async function getStripApiKey() {
-      const { data } = await axios.get(`${apiUrl}/stripeapi`);
+    // async function getStripApiKey() {
+    //   const { data } = await axios.get(`${apiUrl}/stripeapi`);
 
-      setStripeApiKey(data.stripeApiKey);
-    }
-    // "proxy": "http://127.0.0.1:6000"
+    //   setStripeApiKey(data.stripeApiKey);
+    // }
 
-    getStripApiKey();
+
+    // getStripApiKey();
   }, []);
 
   const { user, isAuthenticated, loading } = useSelector((state) => state.auth);
 
-  const [stripeApiKey, setStripeApiKey] = useState("");
+  
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -103,11 +104,11 @@ function App() {
                 component={UpdatePassword}
               />
 
-              {stripeApiKey && (
+              {/* {stripeApiKey && (
                 <Elements stripe={loadStripe(stripeApiKey)}>
                   <Route path="/payment" component={Payment} />
                 </Elements>
-              )}
+              )} */}
 
               {/* admin */}
 

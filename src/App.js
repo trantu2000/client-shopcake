@@ -49,14 +49,14 @@ function App() {
 
   useEffect(() => {
     store.dispatch(loadUser());
-    // async function getStripApiKey() {
-    //   const { data } = await axios.get(`${apiUrl}/stripeapi`);
+    async function getStripApiKey() {
+      const { data } = await axios.get(`${apiUrl}/stripeapi`);
 
-    //   setStripeApiKey(data.stripeApiKey);
-    // }
+      setStripeApiKey(data.stripeApiKey);
+    }
 
 
-    // getStripApiKey();
+    getStripApiKey();
   }, []);
 
   const { user, isAuthenticated, loading } = useSelector((state) => state.auth);
@@ -104,11 +104,11 @@ function App() {
                 component={UpdatePassword}
               />
 
-              {/* {stripeApiKey && (
+              {stripeApiKey && (
                 <Elements stripe={loadStripe(stripeApiKey)}>
                   <Route path="/payment" component={Payment} />
                 </Elements>
-              )} */}
+              )}
 
               {/* admin */}
 

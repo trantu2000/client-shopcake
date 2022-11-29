@@ -91,7 +91,7 @@ export const loadUser = () => async (dispatch) => {
 
         dispatch({ type: LOAD_USER_REQUEST })
 
-        const { data } = await axios.get(`${apiUrl}/me`)
+        const { data } = await axios.get('/api/v1/me')
 
         dispatch({
             type: LOAD_USER_SUCCESS,
@@ -105,6 +105,8 @@ export const loadUser = () => async (dispatch) => {
         })
     }
 }
+
+
 
 
 // Logout user

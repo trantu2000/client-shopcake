@@ -66,6 +66,6 @@
   },
   "devDependencies": {
     "react-alice-carousel": "^2.6.4"
-  },
-  "proxy": "https://tucake2000.herokuapp.com"
+  }
+  
 }

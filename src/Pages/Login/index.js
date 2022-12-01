@@ -49,7 +49,7 @@ const Login = ({ history, location }) => {
 
     if (error) {
       // alert.error(error);
-      toast.error("Lỗi", {
+      toast.error(error, {
         position: toast.POSITION.TOP_RIGHT,
       });
       dispatch(clearErrors());

@@ -30,6 +30,33 @@ import {
 import axios from "axios"
 import { apiUrl } from "../Constants/apiUrl"
 
+// Register user
+export const register = (userData) => async (dispatch) => {
+    try {
+
+        dispatch({ type: REGISTER_USER_REQUEST })
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        // let link = `${apiUrl}/register`;/api/v1/
+
+        const { data } = await axios.post(`${apiUrl}/register`, userData, config)
+
+        dispatch({
+            type: REGISTER_USER_SUCCESS,
+            payload: data.user
+        })
+
+    } catch (error) {
+        dispatch({
+            type: REGISTER_USER_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
 // Login
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -43,6 +70,7 @@ export const login = (email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config)
+        
 
         dispatch({
             type: LOGIN_SUCCESS,
@@ -52,33 +80,6 @@ export const login = (email, password) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: LOGIN_FAIL,
-            payload: error.response.data.message
-        })
-    }
-}
-
-// Register user
-export const register = (userData) => async (dispatch) => {
-    try {
-
-        dispatch({ type: REGISTER_USER_REQUEST })
-
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-
-        const { data } = await axios.post(`${apiUrl}/register`, userData, config)
-
-        dispatch({
-            type: REGISTER_USER_SUCCESS,
-            payload: data.user
-        })
-
-    } catch (error) {
-        dispatch({
-            type: REGISTER_USER_FAIL,
             payload: error.response.data.message
         })
     }

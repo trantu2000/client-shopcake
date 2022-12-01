@@ -43,14 +43,12 @@ import Profile from "./Pages/Profile";
 import UpdateProfile from "./Pages/UpdateProfile";
 import UpdatePassword from "./Pages/UpdatePassword";
 import { apiUrl } from "./Redux/Constants/apiUrl";
-import { useDispatch} from "react-redux";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadUser());
+    store.dispatch(loadUser());
     async function getStripApiKey() {
       const { data } = await axios.get(`${apiUrl}/stripeapi`);
 

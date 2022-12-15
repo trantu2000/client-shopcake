@@ -13,11 +13,15 @@ import MetaData from "../../Components/MetaData";
 import Iframe from "react-iframe";
 import BoxInfo from "./BoxInfo";
 import { Colors } from "../../styles/theme";
+import Breadcrumb from "../../Components/Breadcrumb";
 
 const Contact = () => {
   return (
     <Container>
       <MetaData title="Liên hệ" />
+      <Box sx={{ mt: 10 }}>
+        <Breadcrumb title="Liên hệ" />
+      </Box>
       <Box sx={{ mt: 13, mb: 5 }}>
         <Box sx={{}}>
           <Iframe

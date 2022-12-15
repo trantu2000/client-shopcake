@@ -24,10 +24,10 @@ const BackgroundImageTeam = styled("img")(({ src, theme }) => ({
   // [theme.breakpoints.down("md")]: {
   //   width: "350px",
   // },
-  // [theme.breakpoints.down("sm")]: {
-  //   width: "320px",
-  //   height: "300px",
-  // },
+  [theme.breakpoints.down("sm")]: {
+    width: "13rem",
+    height: "14rem",
+  },
 }));
 
 const ProductItem = ({ product,grid }) => {
@@ -44,7 +44,7 @@ const ProductItem = ({ product,grid }) => {
     });
   };
   return (
-    <Grid item xs={12}  sm={6} md={3}>
+    <Grid item xs={6}  sm={6} md={3}>
       <ToastContainer />
 
       <Box
@@ -130,7 +130,8 @@ const ProductItem = ({ product,grid }) => {
             sx={{
               fontSize: 11,
               "&:hover": {
-                fontSize: 12,
+                bgcolor: Colors.primary,
+                color: Colors.white,
               },
             }}
             variant="outlined"

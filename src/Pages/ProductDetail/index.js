@@ -33,8 +33,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Products from "../../Components/Products";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import ProductItem from "../../Components/ProductItem";
 const ProductDetail = ({ match }) => {
   const [rate, setRate] = useState(5);
+  const { products, productsCount, resPerPage, filteredProductsCount } =
+    useSelector((state) => state.products);
 
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -234,10 +237,11 @@ const ProductDetail = ({ match }) => {
                       }}
                     >
                       Giá:{" "}
-                      {(product.price && (product.price).toLocaleString("vi", {
-                        style: "currency",
-                        currency: "VND",
-                      }))}
+                      {product.price &&
+                        product.price.toLocaleString("vi", {
+                          style: "currency",
+                          currency: "VND",
+                        })}
                     </Typography>
                   </Box>
 
@@ -538,9 +542,10 @@ const ProductDetail = ({ match }) => {
       </Box>
       <Box>
         <Grid container>
-          <Grid item xs={12}>
-            <Products />
-          </Grid>
+          {products &&
+            products.map((product) => (
+              <ProductItem key={product._id} product={product} />
+            ))}
         </Grid>
       </Box>
     </Container>

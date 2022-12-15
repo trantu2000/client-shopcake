@@ -59,7 +59,9 @@ const Blog = () => {
   return (
     <Container>
       <MetaData title="Blog" />
-      <Breadcrumb title="Blog" />
+      <Box sx={{ mt: 10 }}>
+        <Breadcrumb title="Blog" />
+      </Box>
       <Box sx={{ mb: 3 }}>
         <Grid container>
           <Grid item xs={8}>

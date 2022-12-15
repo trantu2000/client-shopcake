@@ -19,7 +19,7 @@ const About = () => {
       <Box sx={{ mb: 3 }}>
         <Box sx={{ width: "100%", height: "37rem" }}>
           <Iframe
-            url="/videos/videocupcake.mp4"
+            url="/videos/videolambanh.mp4"
             width="100%"
             height="100%"
             id=""

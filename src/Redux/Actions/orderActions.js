@@ -34,7 +34,7 @@ export const myOrders = () => async (dispatch) => {
 
         dispatch({ type: MY_ORDERS_REQUEST });
 
-        const { data } = await axios.get(`${apiUrl}/orders/me`)
+        const { data } = await axios.get('api/v1/orders/me')
 
         dispatch({
             type: MY_ORDERS_SUCCESS,
@@ -76,7 +76,7 @@ export const allOrders = () => async (dispatch) => {
 
         dispatch({ type: ALL_ORDERS_REQUEST });
 
-        const { data } = await axios.get(`${apiUrl}/admin/orders`)
+        const { data } = await axios.get('api/v1/admin/orders')
 
         dispatch({
             type: ALL_ORDERS_SUCCESS,

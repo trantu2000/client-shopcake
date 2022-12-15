@@ -173,7 +173,7 @@ const ListOrder = () => {
             <Paper elevation={2} sx={{ mt: 3 }}>
               {loading ? (
                 <Progress />
-              ) : orders.length === 0 ? (
+              ) : orders?.length === 0 ? (
                 <>
                   <Box display="flex" justifyContent="center">
                     <Typography variant="h6" sx={{ p: 10 }}>

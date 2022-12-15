@@ -22,7 +22,7 @@ const Contact = () => {
       <Box sx={{ mt: 10 }}>
         <Breadcrumb title="Liên hệ" />
       </Box>
-      <Box sx={{ mt: 13, mb: 5 }}>
+      <Box sx={{ mb: 5 }}>
         <Box sx={{}}>
           <Iframe
             url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.6909279302563!2d106.68470491468427!3d10.834947761073817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752857945b8703%3A0x7b52f871a0c48258!2zSOG6u20gMTYzIMSQLiBT4buRIDIwLCBQaMaw4budbmcgNSwgR8OyIFbhuqVwLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1667574545247!5m2!1svi!2s"
@@ -137,7 +137,7 @@ const Contact = () => {
                   style={{ width: "100%" }}
                 />
               </Box>
-              <Box sx={{pl:2}}>
+              <Box sx={{ pl: 2 }}>
                 <Button variant="outlined">Gửi</Button>
               </Box>
             </Grid>

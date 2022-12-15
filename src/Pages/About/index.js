@@ -18,8 +18,8 @@ const About = () => {
       </Box>
       <Box sx={{ mb: 3 }}>
         <Box sx={{ width: "100%", height: "37rem" }}>
-          {/* <Iframe
-            url="/videos/videolambanh.mp4"
+          <Iframe
+            url="/videos/videocupcake.mp4"
             width="100%"
             height="100%"
             id=""
@@ -27,8 +27,13 @@ const About = () => {
             display="block"
             position="relative"
             styles={{ border: 0 }}
-          /> */}
+
+            
+          />
         </Box>
+        {/* <iframe width="100%" height="500px" src="https://www.youtube.com/embed/oTvjpxN7DPo?autoplay=1&loop=1&playlist=oTvjpxN7DPo"
+    frameborder="0" allow="accelerometer; autoplay *; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe> */}
 
         <Box sx={{ mb: 3 }}>
           <Grid container>

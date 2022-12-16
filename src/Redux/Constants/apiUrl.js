@@ -3,6 +3,6 @@
 //     ? "http://localhost:6000/api/v1"
 //     : "https://tucake2000.herokuapp.com/api/v1";
 
-export const apiUrl = 'https://server-shopcake-tramtu-trantu2000.vercel.app';
+export const apiUrl = 'https://server-shopcake-tramtu-trantu2000.vercel.app/api/v1';
 // export const apiUrl = 'api/v1';
 // export const apiUrl = "http://localhost:6000";

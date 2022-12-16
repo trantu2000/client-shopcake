@@ -17,6 +17,7 @@
     "moment": "^2.29.4",
     "polished": "^4.2.2",
     "prop-types": "^15.8.1",
+    "query-string": "^8.0.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-carousel-minimal": "^1.4.1",
@@ -67,6 +68,5 @@
   "devDependencies": {
     "react-alice-carousel": "^2.6.4"
   },
-  "proxy": "http://localhost:6000"
-  
+  "proxy": "https://server-shopcake-tramtu-trantu2000.vercel.app/api/v1"
 }

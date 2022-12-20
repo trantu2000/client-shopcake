@@ -70,7 +70,7 @@ export const login = (email, password) => async (dispatch) => {
 
         const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config)
         // console.log(data.token);
-        localStorage.setItem('tokenUser', data.token)
+        localStorage.setItem('tokenUser', JSON.stringify(data.token))
         
 
         dispatch({

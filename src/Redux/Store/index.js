@@ -52,6 +52,9 @@ let initialState = {
     shippingInfo: localStorage.getItem("shippingInfo-cake")
       ? JSON.parse(localStorage.getItem("shippingInfo-cake"))
       : {},
+    token: localStorage.getItem("tokenUser")
+      ? JSON.parse(localStorage.getItem("tokenUser"))
+      : {},
   },
 };
 

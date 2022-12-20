@@ -54,6 +54,8 @@ const ShopingCart = () => {
   const clamp = (min, max) => (v) => v <= min ? min : v >= max ? max : v;
   const clampV = clamp(0, 10);
   const { cartItems } = useSelector((state) => state.cart);
+  const { token } = useSelector((state) => state.cart);
+  console.log(token);
   const dispatch = useDispatch();
 
   const increaseQty = (id, quantity, stock) => {

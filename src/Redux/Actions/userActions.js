@@ -69,12 +69,15 @@ export const login = (email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config)
+        // console.log(data.token);
+        
         
 
         dispatch({
             type: LOGIN_SUCCESS,
             payload: data.user
         })
+        localStorage.setItem('tokenUser', JSON.stringify(data.token))
 
     } catch (error) {
         dispatch({

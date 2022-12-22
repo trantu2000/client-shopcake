@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 
 const Search = ({ history }) => {
   const [keyword, setKeyWord] = useState("");
-  console.log(keyword);
+  //console.log(keyword);
 
   const searchHandle = (e) => {
     e.preventDefault();

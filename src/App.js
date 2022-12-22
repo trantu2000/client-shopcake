@@ -49,14 +49,14 @@ function App() {
 
   useEffect(() => {
     store.dispatch(loadUser());
-    // async function getStripApiKey() {
-    //   const { data } = await axios.get(`${apiUrl}/stripeapi`);
+    async function getStripApiKey() {
+      const { data } = await axios.get(`${apiUrl}/stripeapi`);
 
-    //   setStripeApiKey(data.stripeApiKey);
-    // }
+      setStripeApiKey(data.stripeApiKey);
+    }
 
 
-    // getStripApiKey();
+    getStripApiKey();
   }, []);
 
   const { user, isAuthenticated, loading } = useSelector((state) => state.auth);

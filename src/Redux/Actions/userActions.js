@@ -45,6 +45,8 @@ export const register = (userData) => async (dispatch) => {
         }
 
         const { data } = await axios.post(`${apiUrl}/register`, userData, config)
+        localStorage.setItem('shop-cake-tu', data.token)
+        await loadUser()
 
         dispatch({
             type: REGISTER_USER_SUCCESS,
@@ -95,10 +97,7 @@ export const login = (email, password) => async (dispatch) => {
         }
 
         const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config)
-        // console.log(data.token);
-        // localStorage.setItem('tokenUser', JSON.stringify(data.token))
-        
-        
+    
         localStorage.setItem('shop-cake-tu', data.token)
         await loadUser()
         dispatch({

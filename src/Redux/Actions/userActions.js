@@ -29,6 +29,8 @@ import {
 } from "../Constants/userConstants"
 import axios from "axios"
 import { apiUrl } from "../Constants/apiUrl"
+import setAuthToken from "../../utils/setAuthToken"
+
 
 // Register user
 export const register = (userData) => async (dispatch) => {
@@ -56,39 +58,12 @@ export const register = (userData) => async (dispatch) => {
         })
     }
 }
-// Login
-export const login = (email, password) => async (dispatch) => {
-    try {
-
-        dispatch({ type: LOGIN_REQUEST })
-
-        const config = {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-
-        const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config)
-        // console.log(data.token);
-        //localStorage.setItem('tokenUser', JSON.stringify(data.token))
-        
-
-        dispatch({
-            type: LOGIN_SUCCESS,
-            payload: data.user
-        })
-        
-
-    } catch (error) {
-        dispatch({
-            type: LOGIN_FAIL,
-            payload: error.response.data.message
-        })
-    }
-}
 
 // Load user
 export const loadUser = () => async (dispatch) => {
+    if (localStorage['shop-cake-tu']) {
+        setAuthToken(localStorage['shop-cake-tu'])
+    }
     try {
 
         dispatch({ type: LOAD_USER_REQUEST })
@@ -107,7 +82,38 @@ export const loadUser = () => async (dispatch) => {
         })
     }
 }
+// Login
+export const login = (email, password) => async (dispatch) => {
+    try {
 
+        dispatch({ type: LOGIN_REQUEST })
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.post(`${apiUrl}/login`, { email, password }, config)
+        // console.log(data.token);
+        // localStorage.setItem('tokenUser', JSON.stringify(data.token))
+        
+        
+        localStorage.setItem('shop-cake-tu', data.token)
+        await loadUser()
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: data.user
+        })
+        
+        
+    } catch (error) {
+        dispatch({
+            type: LOGIN_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
 
 
 

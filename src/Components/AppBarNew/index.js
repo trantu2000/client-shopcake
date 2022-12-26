@@ -37,7 +37,7 @@ const AppBarNew = () => {
   const { user, loading } = useSelector((state) => state.auth);
   // const { userInfo } = useSelector((state) => state.token);
 
-  //  console.log(userInfo);
+  console.log(user);
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 

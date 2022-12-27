@@ -9,6 +9,9 @@ import { Colors } from "../../styles/theme";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../Redux/Actions/productActions";
 import Previews from "../../Components/Previews";
+import { TypographyContentIntro, TypographySubTileIntro, TypographyTileIntro } from "./style";
+
+
 
 const Home = () => {
   const { loading, products, error } = useSelector((state) => state.products);
@@ -26,51 +29,28 @@ const Home = () => {
       <Promotions />
       <Container>
         <Box textAlign="center" sx={{ mt: 4 }}>
-          <Grid container>
-            <Grid item xs={2}></Grid>
-            <Grid item xs={8}>
-              <Typography
-                sx={{ color: Colors.primary, fontSize: 19, fontWeight: 600 }}
-              >
-                GIỚI THIỆU CỬA HÀNG BÁNH KẸO
-              </Typography>
-              <Typography
-                sx={{
-                  color: Colors.black,
-                  fontSize: "4rem",
-                  fontWeight: 600,
-                  fontFamily: "Montez",
-                  mt: 2,
-                }}
-              >
-                Cakes and bakes from the house of Queens!
-              </Typography>
-              <Typography
-                sx={{
-                  mt: 3,
-                  color: Colors.black,
-                  fontSize: 17,
-                  fontWeight: 400,
-                }}
-              >
-                "Cake Shop" là một Thương hiệu của Jordan, khởi đầu là một doanh
-                nghiệp gia đình nhỏ. Chủ sở hữu là Tiến sĩ Iyad Sultan và Tiến
-                sĩ Sereen Sharabati, được hỗ trợ bởi đội ngũ 80 nhân viên.
-              </Typography>
-            </Grid>
-            <Grid item xs={2}></Grid>
-          </Grid>
+          <Box display="flex" flexDirection="column" sx={{ mb: 3 }}>
+            <TypographyTileIntro>GIỚI THIỆU CỬA HÀNG BÁNH</TypographyTileIntro>
+            <TypographySubTileIntro>
+              Cakes and bakes from the house of Queens!
+            </TypographySubTileIntro>
+            <TypographyContentIntro>
+              "Cake Shop" là một Thương hiệu của Jordan, khởi đầu là một doanh
+              nghiệp gia đình nhỏ. Chủ sở hữu là Tiến sĩ Iyad Sultan và Tiến sĩ
+              Sereen Sharabati, được hỗ trợ bởi đội ngũ 80 nhân viên.
+            </TypographyContentIntro>
+          </Box>
         </Box>
 
         <LoopWithSlidesPerGroup />
-        <Divider />
+        {/* <Divider /> */}
 
         <Previews />
 
         {/* Instagram Section Begin */}
         <Box
           sx={{
-            m: 5,
+            m: 2,
           }}
         >
           <Grid container>

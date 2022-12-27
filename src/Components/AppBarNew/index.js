@@ -20,9 +20,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Redux/Actions/userActions";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
+// import { styled, alpha } from "@mui/material/styles";
+// import InputBase from "@mui/material/InputBase";
+// import SearchIcon from "@mui/icons-material/Search";
 
 const AppBarNew = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -37,7 +37,7 @@ const AppBarNew = () => {
   const { user, loading } = useSelector((state) => state.auth);
   // const { userInfo } = useSelector((state) => state.token);
 
-  console.log(user);
+  // console.log(user);
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -48,45 +48,45 @@ const AppBarNew = () => {
     });
   };
 
-  const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  }));
+  // const Search = styled("div")(({ theme }) => ({
+  //   position: "relative",
+  //   borderRadius: theme.shape.borderRadius,
+  //   backgroundColor: alpha(theme.palette.common.white, 0.15),
+  //   "&:hover": {
+  //     backgroundColor: alpha(theme.palette.common.white, 0.25),
+  //   },
+  //   marginRight: theme.spacing(2),
+  //   marginLeft: 0,
+  //   width: "100%",
+  //   [theme.breakpoints.up("sm")]: {
+  //     marginLeft: theme.spacing(3),
+  //     width: "auto",
+  //   },
+  // }));
 
-  const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }));
+  // const SearchIconWrapper = styled("div")(({ theme }) => ({
+  //   padding: theme.spacing(0, 2),
+  //   height: "100%",
+  //   position: "absolute",
+  //   pointerEvents: "none",
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // }));
 
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    "& .MuiInputBase-input": {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("md")]: {
-        width: "20ch",
-      },
-    },
-  }));
+  // const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  //   color: "inherit",
+  //   "& .MuiInputBase-input": {
+  //     padding: theme.spacing(1, 1, 1, 0),
+  //     // vertical padding + font size from searchIcon
+  //     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+  //     transition: theme.transitions.create("width"),
+  //     width: "100%",
+  //     [theme.breakpoints.up("md")]: {
+  //       width: "20ch",
+  //     },
+  //   },
+  // }));
 
   return (
     <AppBar position="fixed" sx={{ zIndex: 1000 }}>
@@ -141,7 +141,7 @@ const AppBarNew = () => {
             <Link to="/blog">
               <BoxNav>Blog</BoxNav>
             </Link>
-            <Box display="flex" justifyContent="center" alignItems="center">
+            {/* <Box display="flex" justifyContent="center" alignItems="center">
               <Box
                 sx={{
                   color: Colors.white,
@@ -157,7 +157,7 @@ const AppBarNew = () => {
                   />
                 </Search>
               </Box>
-            </Box>
+            </Box> */}
           </Box>
 
           <Box sx={{ flexGrow: 0}}>

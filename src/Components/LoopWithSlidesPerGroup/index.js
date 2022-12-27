@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 import { Colors } from "../../styles/theme";
 
 export default function LoopWithSlidesPerGroup() {
@@ -75,6 +75,54 @@ export default function LoopWithSlidesPerGroup() {
       name: "RedVelVed",
     },
   ];
+  const SwiperSlideBox = styled("Box")(({ theme }) => ({
+    width: "110px",
+    height: "110px",
+    borderRadius: "100vh",
+    backgroundColor: Colors.primary,
+    mb: 5,
+    mt: 5,
+    "&:hover": {
+      color: "#fff",
+    },
+
+    // border: "1px solid black"
+    // [theme.breakpoints.down("md")]: {
+    //   width: "350px",
+    // },
+    [theme.breakpoints.down("sm")]: {
+      width: "60px",
+      height: "60px",
+    },
+  }));
+  const ImageBox = styled("Box")(({ theme }) => ({
+    width: "5px",
+    height: "5px",
+
+    // border: "1px solid black"
+    // [theme.breakpoints.down("md")]: {
+    //   width: "350px",
+    // },
+    [theme.breakpoints.down("sm")]: {
+      width: "5px",
+      height: "5px",
+    },
+  }));
+  // const ImageUrl = styled("img")(({ src, theme }) => ({
+  //   src: `url(${src})`,
+  //   width: "50px",
+  //   height: "50px",
+
+  //   // border: "1px solid black"
+  //   // [theme.breakpoints.down("md")]: {
+  //   //   width: "350px",
+  //   // },
+  //   [theme.breakpoints.down("sm")]: {
+  //     width: "5px",
+  //     height: "5x",
+  //   },
+  // }));
+
   return (
     <>
       <Swiper
@@ -86,54 +134,38 @@ export default function LoopWithSlidesPerGroup() {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+        // navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
         {categories.map((item) => (
           <SwiperSlide key={item.id}>
-            <Box
+            <SwiperSlideBox
               display="flex"
               justifyContent="center"
               alignItems="center"
-              sx={{
-                backgroundColor: Colors.primary,
-                width: "11rem",
-                height: "11rem",
-                borderRadius: "100vh",
-                mb: 5,
-                mt: 5,
-                "&:hover": {
-            
-                  color: "#fff"
-                },
-              }}
             >
               <Box
                 sx={{
-                  width: "5rem",
-                  height: "5em",
+                  width: "50px",
+                  height: "50px",
+                  ml:4,
+                  mt:1
                 }}
               >
-                <Box
-                  sx={{
-                    mt: -2,
-                  }}
-                >
-                  <img src={item.image} alt={item.name} />
-                </Box>
-                <Typography
-                  sx={{
-                    mt: 1,
-                    mb: 3,
-                    fontSize: 16,
-                    fontWeight: 600,
-                  }}
-                >
-                  {item.name}
-                </Typography>
+                <img src={item.image} alt={item.name} />
               </Box>
-            </Box>
+              <Typography
+                sx={{
+                  mt: 1,
+                  mb: 3,
+                  fontSize: 16,
+                  fontWeight: 600,
+                }}
+              >
+                {item.name}
+              </Typography>
+            </SwiperSlideBox>
           </SwiperSlide>
         ))}
       </Swiper>

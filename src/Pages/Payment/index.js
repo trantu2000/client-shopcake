@@ -7,7 +7,6 @@ import {
   Step,
   StepLabel,
   Stepper,
-  TextField,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -28,6 +27,7 @@ import {
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { createOrder } from "../../Redux/Actions/orderActions";
+import { apiUrl } from "../../Redux/Constants/apiUrl";
 const steps = ["Thông tin vận chuyển", "Xác nhận thông tin", "Đặt hàng"];
 const options = {
   style: {
@@ -70,7 +70,7 @@ const Payment = ({ history }) => {
           "Content-Type": "application/json",
         },
       };
-      res = await axios.post("/api/v1/payment/process", paymentData, config);
+      res = await axios.post(`${apiUrl}/payment/process`, paymentData, config);
 
       const clientSecret = res.data.client_secret;
 
@@ -297,23 +297,21 @@ const Payment = ({ history }) => {
                         </Box>
                       </Box>
                       <Box sx={{ mt: 2, pl: 7, pr: 7 }}>
-                   
-                          <Button
-                            type="submit"
-                            color="primary"
-                            variant="contained"
-                            fullWidth
-                          >
-                            Thanh toán{" "}
-                            {` - ${
-                              orderInfo &&
-                              orderInfo.totalPrice.toLocaleString("vi", {
-                                style: "currency",
-                                currency: "VND",
-                              })
-                            }`}
-                          </Button>
-                      
+                        <Button
+                          type="submit"
+                          color="primary"
+                          variant="contained"
+                          fullWidth
+                        >
+                          Thanh toán{" "}
+                          {` - ${
+                            orderInfo &&
+                            orderInfo.totalPrice.toLocaleString("vi", {
+                              style: "currency",
+                              currency: "VND",
+                            })
+                          }`}
+                        </Button>
                       </Box>
                     </Box>
                   </Paper>

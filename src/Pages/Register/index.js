@@ -43,7 +43,7 @@ useEffect(() => {
 
     if (isAuthenticated) {
         history.push('/')
-        toast.success('Register success!', {
+        toast.success('Đăng ký thành công!', {
             position: toast.POSITION.TOP_RIGHT
         });
 

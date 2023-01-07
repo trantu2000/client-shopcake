@@ -42,7 +42,7 @@ const Login = ({ history, location }) => {
   useEffect(() => {
     if (isAuthenticated) {
       history.push(redirect);
-      toast.success("Login success !", {
+      toast.success("Đăng nhập thành công!", {
         position: toast.POSITION.TOP_RIGHT,
       });
     }

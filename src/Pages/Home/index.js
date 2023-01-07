@@ -43,7 +43,7 @@ const Home = () => {
         </Box>
 
         <LoopWithSlidesPerGroup />
-        {/* <Divider /> */}
+        <Divider sx={{mt:4}}/>
 
         <Previews />
 

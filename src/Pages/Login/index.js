@@ -49,9 +49,9 @@ const Login = ({ history, location }) => {
 
     if (error) {
       // alert.error(error);
-      toast.error(error, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      // toast.error(error, {
+      //   position: toast.POSITION.TOP_RIGHT,
+      // });
       dispatch(clearErrors());
     }
   }, [dispatch, isAuthenticated, error, history, redirect]);

@@ -19,16 +19,20 @@ const Footer = () => {
         pt: 12,
         pb: 12,
         fontSize: { xs: "12px", md: "14px" },
-        height: "150px",
+        height: "auto",
         position: "relative",
       }}
     >
       <Container>
         <Grid container spacing={2} justifyContent="center">
-          <Grid item xs={4}>
-            <FooterTitle variant="h6">Giờ làm việc</FooterTitle>
+          <Grid item xs={12} sm={4}>
+            <FooterTitle variant="h6" align="center">
+              Giờ làm việc
+            </FooterTitle>
             <Box
               display="flex"
+              justifyContent="center"
+              alignItems="center"
               flexDirection="column"
               sx={{
                 mb: 2,
@@ -69,7 +73,7 @@ const Footer = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4}>
             <Box
               display="flex"
               justifyContent="center"
@@ -116,11 +120,15 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4}>
             <Box
               sx={{
                 ml: 5,
               }}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              flexDirection="column"
             >
               <FooterTitle variant="h6">Nhận thông báo</FooterTitle>
               <Stack>
@@ -141,7 +149,6 @@ const Footer = () => {
           </Grid>
         </Grid>
       </Container>
-     
     </Box>
   );
 };

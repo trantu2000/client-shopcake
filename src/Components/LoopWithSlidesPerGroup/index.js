@@ -80,7 +80,6 @@ export default function LoopWithSlidesPerGroup() {
     height: "110px",
     borderRadius: "100vh",
     backgroundColor: Colors.primary,
-    mb: 5,
     mt: 5,
     "&:hover": {
       color: "#fff",
@@ -158,7 +157,6 @@ export default function LoopWithSlidesPerGroup() {
               <Typography
                 sx={{
                   mt: 1,
-                  mb: 3,
                   fontSize: 16,
                   fontWeight: 600,
                 }}

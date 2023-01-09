@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Breadcrumbs,
   Button,
@@ -7,8 +6,8 @@ import {
   Divider,
   Grid,
   IconButton,
-  Paper,
   Rating,
+  TextField,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -20,7 +19,11 @@ import { Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductDetail } from "../../Redux/Actions/productActions";
+import {
+  clearErrors,
+  getProductDetail,
+  newReview,
+} from "../../Redux/Actions/productActions";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -31,11 +34,58 @@ import { addItemToCart } from "../../Redux/Actions/cartActions";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Products from "../../Components/Products";
-import TextareaAutosize from "@mui/material/TextareaAutosize";
+// import TextareaAutosize from "@mui/material/TextareaAutosize";
 import ProductItem from "../../Components/ProductItem";
+import Reviews from "../../Components/Reviews";
+import TextareaAutosize from "@mui/base/TextareaAutosize";
+import ModalReviewsProduct from "../../Components/ModalReviewsProduct";
+import { styled } from "@mui/material/styles";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import CloseIcon from "@mui/icons-material/Close";
+import { NEW_REVIEW_RESET } from "../../Redux/Constants/productConstants";
+
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+  "& .MuiDialogContent-root": {
+    padding: theme.spacing(2),
+  },
+  "& .MuiDialogActions-root": {
+    padding: theme.spacing(1),
+  },
+}));
+
+function BootstrapDialogTitle(props) {
+  const { children, onClose, ...other } = props;
+
+  return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: "absolute",
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  );
+}
+
+BootstrapDialogTitle.propTypes = {
+  children: PropTypes.node,
+  onClose: PropTypes.func.isRequired,
+};
+
 const ProductDetail = ({ match }) => {
-  const [rate, setRate] = useState(5);
   const { products, productsCount, resPerPage, filteredProductsCount } =
     useSelector((state) => state.products);
 
@@ -71,14 +121,41 @@ const ProductDetail = ({ match }) => {
       "aria-controls": `simple-tabpanel-${index}`,
     };
   }
+
   const { loading, error, product } = useSelector(
     (state) => state.productdetail
   );
+  console.log(product);
 
   const dispatch = useDispatch();
+  const { error: reviewError, success } = useSelector(
+    (state) => state.newReview
+  );
+
   useEffect(() => {
     dispatch(getProductDetail(match.params.id));
-  }, [dispatch, match.params.id, product]);
+
+    if (error) {
+      // alert.error(error);
+      toast.error(error, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      dispatch(clearErrors());
+    }
+    if (reviewError) {
+      toast.error(reviewError, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      dispatch(clearErrors());
+    }
+    if (success) {
+      toast.success("Đánh giá thành công !", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      dispatch({ type: NEW_REVIEW_RESET });
+    }
+  }, [dispatch, match.params.id, product, error, reviewError, success]);
+
   const [quantity, setQuantity] = useState(1);
   const [value, setValue] = useState(0);
 
@@ -103,6 +180,33 @@ const ProductDetail = ({ match }) => {
     toast.success("Thêm vào giỏ hàng thành công !", {
       position: toast.POSITION.TOP_RIGHT,
     });
+  };
+
+  const [open, setOpen] = useState(false);
+  const [rating, setRate] = useState(5);
+  const [comment, setComment] = useState("");
+  //   console.log(comment);
+  //   console.log(rate);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const reviewHandler = () => {
+    const formData = new FormData();
+
+    formData.set("rating", rating);
+    formData.set("comment", comment);
+    formData.set("productId", match.params.id);
+
+    dispatch(newReview(formData));
+  };
+
+  const handleCloseAndreviewHandler = () => {
+    reviewHandler();
+    handleClose();
   };
 
   return (
@@ -345,6 +449,67 @@ const ProductDetail = ({ match }) => {
                       <InstagramIcon />
                     </IconButton>
                   </Box>
+
+                  {/* <Box>
+                    <ModalReviewsProduct/>
+                  </Box> */}
+
+                  <div>
+                    <Button
+                      variant="outlined"
+                      onClick={handleClickOpen}
+                      sx={{ fontSize: 12 }}
+                    >
+                      Đánh giá ngay
+                    </Button>
+                    <BootstrapDialog
+                      onClose={handleClose}
+                      aria-labelledby="customized-dialog-title"
+                      open={open}
+                    >
+                      <BootstrapDialogTitle
+                        id="customized-dialog-title"
+                        onClose={handleClose}
+                        sx={{ fontSize: 13 }}
+                      >
+                        Đánh giá sản phẩm
+                      </BootstrapDialogTitle>
+                      <DialogContent dividers>
+                        <Box
+                          component="form"
+                          sx={{
+                            "& .MuiTextField-root": { m: 1, width: "25ch" },
+                          }}
+                          noValidate
+                          autoComplete="off"
+                        >
+                          <Box sx={{ mb: 1 }}>
+                            <Rating
+                              name="rating"
+                              value={rating}
+                              onChange={(event, newRate) => {
+                                setRate(newRate);
+                              }}
+                            />
+                          </Box>
+                          <TextareaAutosize
+                            name="comment"
+                            aria-label="minimum height"
+                            minRows={5}
+                            placeholder="Nhập bình luận của bạn"
+                            style={{ width: 400 }}
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                          />
+                        </Box>
+                      </DialogContent>
+                      <DialogActions sx={{ fontSize: 13 }}>
+                        <Button autoFocus onClick={handleCloseAndreviewHandler}>
+                          Gửi
+                        </Button>
+                      </DialogActions>
+                    </BootstrapDialog>
+                  </div>
                 </Box>
               </Grid>
             </Grid>
@@ -410,24 +575,43 @@ const ProductDetail = ({ match }) => {
                     Bình luận của bạn tại đây
                   </Typography>
                 </Box>
-                <Box sx={{ mt: 1, mb: 1 }}>
+                {/* <Box sx={{ mt: 1, mb: 1 }}>
                   <Rating
                     name="simple-controlled"
-                    value={rate}
+                    value={rating}
                     onChange={(event, newRate) => {
                       setRate(newRate);
                     }}
                   />
-                </Box>
-                <Box component="form">
+                </Box> */}
+                {/* <Box>
                   <TextareaAutosize
                     aria-label="minimum height"
                     minRows={3}
                     placeholder="Nhập bình luận của bạn"
                     style={{ width: 200 }}
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
                   />
-                </Box>
-                <Box sx={{ mt: 1, color: Colors.white }}>
+                </Box> */}
+                {/* <Box
+                  sx={{
+                    "& .MuiTextField-root": { m: 1, width: "25ch" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField
+                    id="outlined-multiline-static"
+                    multiline
+                    rows={4}
+                    // defaultValue="Nhập bình luận của bạn"
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                  />
+                </Box> */}
+
+                {/* <Box sx={{ mt: 1, color: Colors.white }}>
                   <Link to="#">
                     <Button
                       type="submit"
@@ -438,12 +622,15 @@ const ProductDetail = ({ match }) => {
                       Gửi
                     </Button>
                   </Link>
-                </Box>
+                </Box> */}
                 <Divider sx={{ mt: 3, mb: 2 }} />
                 <Box sx={{ mt: 1, mb: 1 }}>
-                  <Typography variant="h6">Những bình luận khác</Typography>
+                  <Typography variant="h6">Tất cả đánh giá</Typography>
                 </Box>
-                <Box sx={{ mt: 1, mb: 1 }}>
+                {product.reviews && product.reviews.length > 0 && (
+                  <Reviews reviews={product.reviews} />
+                )}
+                {/* <Box sx={{ mt: 1, mb: 1 }}>
                   <Box display="flex">
                     <Box sx={{ mt: 1, mb: 1, p: 1 }}>
                       <Avatar
@@ -460,70 +647,7 @@ const ProductDetail = ({ match }) => {
                       </Paper>
                     </Box>
                   </Box>
-                </Box>
-                <Box sx={{ mt: 1, mb: 1 }}>
-                  <Box display="flex">
-                    <Box sx={{ mt: 1, mb: 1, p: 1 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="https://res.cloudinary.com/da5zt66t6/image/upload/v1664461361/products-cake/ta-2_fomhgd.jpg"
-                      />
-                    </Box>
-                    <Box>
-                      <Paper elevation={3} sx={{ p: 2 }}>
-                        <Typography variant="h6">Trần Thanh Tú</Typography>
-                        <Typography variant="body1">
-                          Bánh khá là ngon ạ Bánh khá là ngon ạ Bánh khá là ngon
-                          ạ Bánh khá là ngon ạ Bánh khá là ngon ạ Bánh khá là
-                          ngon ạ Bánh khá là ngon ạ Bánh khá là ngon ạ Bánh khá
-                          là ngon ạ Bánh khá là ngon ạ
-                        </Typography>
-                      </Paper>
-                    </Box>
-                  </Box>
-                </Box>
-                <Box sx={{ mt: 1, mb: 1 }}>
-                  <Box display="flex">
-                    <Box sx={{ mt: 1, mb: 1, p: 1 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="https://res.cloudinary.com/da5zt66t6/image/upload/v1664461361/products-cake/ta-2_fomhgd.jpg"
-                      />
-                    </Box>
-                    <Box>
-                      <Paper elevation={3} sx={{ p: 2 }}>
-                        <Typography variant="h6">Trần Thanh Tú</Typography>
-                        <Typography variant="body1">
-                          Bánh khá là ngon ạ Bánh khá là ngon ạ Bánh khá là ngon
-                          ạ Bánh khá là ngon ạ Bánh khá là ngon ạ Bánh khá là
-                          ngon ạ Bánh khá là ngon ạ Bánh khá là ngon ạ Bánh khá
-                          là ngon ạ Bánh khá là ngon ạ
-                        </Typography>
-                      </Paper>
-                    </Box>
-                  </Box>
-                </Box>
-                <Box sx={{ mt: 1, mb: 1 }}>
-                  <Box display="flex">
-                    <Box sx={{ mt: 1, mb: 1, p: 1 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="https://res.cloudinary.com/da5zt66t6/image/upload/v1664461361/products-cake/ta-2_fomhgd.jpg"
-                      />
-                    </Box>
-                    <Box>
-                      <Paper elevation={3} sx={{ p: 2 }}>
-                        <Typography variant="h6">Trần Thanh Tú</Typography>
-                        <Typography variant="body1">
-                          Bánh khá là ngon ạ Bánh khá là ngon ạ Bánh khá là ngon
-                          ạ Bánh khá là ngon ạ Bánh khá là ngon ạ Bánh khá là
-                          ngon ạ Bánh khá là ngon ạ Bánh khá là ngon ạ Bánh khá
-                          là ngon ạ Bánh khá là ngon ạ
-                        </Typography>
-                      </Paper>
-                    </Box>
-                  </Box>
-                </Box>
+                </Box> */}
               </Box>
             </TabPanel>
           </Box>

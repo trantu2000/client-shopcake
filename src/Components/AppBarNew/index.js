@@ -192,7 +192,7 @@ const AppBarNew = () => {
                         {!user ? (
                           <Avatar
                             alt="Remy Sharp"
-                            src="https://res.cloudinary.com/da5zt66t6/image/upload/v1664461361/products-cake/ta-2_fomhgd.jpg"
+                            src="https://res.cloudinary.com/da5zt66t6/image/upload/v1673284083/avatars/default_avatar_j5ddjb.jpg"
                           />
                         ) : (
                           <Avatar

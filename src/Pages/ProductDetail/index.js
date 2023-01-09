@@ -7,7 +7,6 @@ import {
   Grid,
   IconButton,
   Rating,
-  TextField,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -34,11 +33,9 @@ import { addItemToCart } from "../../Redux/Actions/cartActions";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-// import TextareaAutosize from "@mui/material/TextareaAutosize";
 import ProductItem from "../../Components/ProductItem";
 import Reviews from "../../Components/Reviews";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
-import ModalReviewsProduct from "../../Components/ModalReviewsProduct";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -86,8 +83,10 @@ BootstrapDialogTitle.propTypes = {
 };
 
 const ProductDetail = ({ match }) => {
-  const { products, productsCount, resPerPage, filteredProductsCount } =
-    useSelector((state) => state.products);
+  // const { products, productsCount, resPerPage, filteredProductsCount } =
+  //   useSelector((state) => state.products);
+
+  const { products } = useSelector((state) => state.products);
 
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -136,7 +135,6 @@ const ProductDetail = ({ match }) => {
     dispatch(getProductDetail(match.params.id));
 
     if (error) {
-      // alert.error(error);
       toast.error(error, {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -185,8 +183,7 @@ const ProductDetail = ({ match }) => {
   const [open, setOpen] = useState(false);
   const [rating, setRate] = useState(5);
   const [comment, setComment] = useState("");
-  //   console.log(comment);
-  //   console.log(rate);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -449,10 +446,6 @@ const ProductDetail = ({ match }) => {
                       <InstagramIcon />
                     </IconButton>
                   </Box>
-
-                  {/* <Box>
-                    <ModalReviewsProduct/>
-                  </Box> */}
 
                   <div>
                     <Button

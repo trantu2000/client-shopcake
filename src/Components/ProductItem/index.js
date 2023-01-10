@@ -44,7 +44,7 @@ const ProductItem = ({ product,grid }) => {
     });
   };
   return (
-    <Grid item xs={6}  sm={6} md={3}>
+    <Grid item xs={6}  sm={6} md={grid}>
       <ToastContainer />
 
       <Box
@@ -59,11 +59,11 @@ const ProductItem = ({ product,grid }) => {
           
         }}
       >
-        <Box sx={{ position: "absolute", ml: 25, pt: 2, pr: 1 }}>
+        {/* <Box sx={{ position: "absolute", ml: 25, pt: 2, pr: 1 }}>
           <IconButton>
             <FavoriteIcon sx={{ fontSize: 25, color: Colors.primary }} />
           </IconButton>
-        </Box>
+        </Box> */}
         <Link to={`/product/${product._id}`}>
           <Box
             sx={{ width: "100%", height: "22rem", borderRadius: "10rem" }}

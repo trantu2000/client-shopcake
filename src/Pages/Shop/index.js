@@ -91,7 +91,7 @@ const Shop = ({ match }) => {
               {keyword ? (
                 <>
                   <Grid container>
-                    <Grid item xs={3}>
+                    <Grid item md={3}>
                       <Box>
                         {/* <FormFilterCategory /> */}
                         <FormControl sx={{ m: 1, width: "14ch" }}>
@@ -113,7 +113,7 @@ const Shop = ({ match }) => {
                         </FormControl>
                       </Box>
                     </Grid>
-                    <Grid item xs={9}>
+                    <Grid item md={9}>
                       <Grid container>
                         {products.map((product) => (
                           <ProductItem
@@ -130,7 +130,7 @@ const Shop = ({ match }) => {
                 <Grid container>
                   {products &&
                     products.map((product) => (
-                      <ProductItem key={product._id} product={product} />
+                      <ProductItem key={product._id} product={product} grid={3}/>
                     ))}
                 </Grid>
               )}

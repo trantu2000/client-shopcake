@@ -365,7 +365,7 @@ const ShopingCart = () => {
                     </Typography>
                   </Grid>
                 </Grid>
-                <Grid
+                {/* <Grid
                   display="flex"
                   justifyContent="center"
                   alignItem="center"
@@ -393,7 +393,7 @@ const ShopingCart = () => {
                       Áp dụng
                     </Button>
                   </Grid>
-                </Grid>
+                </Grid> */}
 
                 <Link to="/shipping">
                   <Button

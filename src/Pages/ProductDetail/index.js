@@ -661,7 +661,7 @@ const ProductDetail = ({ match }) => {
         <Grid container>
           {products &&
             products.map((product) => (
-              <ProductItem key={product._id} product={product} />
+              <ProductItem key={product._id} product={product} grid={3}/>
             ))}
         </Grid>
       </Box>
